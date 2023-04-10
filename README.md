@@ -62,14 +62,9 @@ La tabla `status_history` es una tabla intermedia que relaciona las propiedades 
 
 <!-- La tabla `likes` registra los "likes" que han dado los usuarios a las propiedades. Cada registro en esta tabla representa un "like" de un usuario a una propiedad en una fecha determinada. -->
 
-## Comentarios adicionales
-
-¡Gracias por la oportunidad de dejarme participar en esta prueba técnica!
-
 ## "LIKE" SERVICE
 
 Este proyecto extiende el modelo de la base de datos existente para permitir que los usuarios den "like" a propiedades. Para lograrlo, se ha creado una nueva entidad llamada `user_like_property` que registra la información de los likes de los usuarios.
-
 
 Adjunto el diagrama E-R que diseñé para la base de datos, en el archivo "er-diagram.png":
 ![Alt Text](backend/er-diagram.png)
@@ -103,3 +98,7 @@ Se ha creado la tabla `user_like_property` y se han definido sus relaciones con 
 Además, al definir las relaciones belongsTo con las tablas existentes, se garantiza que los datos se mantengan integrales y coherentes en todo momento.
 
 Para más información acerca de este proyecto, por favor consultar la documentación.
+
+## Comentarios adicionales
+
+¡Gracias por la oportunidad de dejarme participar en esta prueba técnica!
