@@ -34,21 +34,36 @@ const get = async (req: Request, res: Response) => {
       filtros.year = _year;
     }
 
-    const p = await property.findAll({
-      attributes: ["address", "city", "price", "description"],
+    const _prop = await property.findAll({
+      attributes: ["address", "city", "price", "description", "id"],
+      raw: true,
       where: {
         ...filtros,
       },
       include: [
         {
           model: status_history,
+          include: [
+            {
+              model: status,
+            },
+          ],
         },
       ],
+    });
+    const prop = _prop.map((prop: any) => {
+      const { address, city, price, description, id } = prop;
+      return {
+        address,
+        city,
+        price,
+        description,
+      };
     });
     return res.status(200).json({
       message: "Se obtuvieron las propiedades",
       // data: { property, status, status_id },
-      data: p,
+      data: prop,
     });
   } catch (error: any) {
     console.log(error);
