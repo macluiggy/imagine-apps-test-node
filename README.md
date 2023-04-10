@@ -75,7 +75,6 @@ El siguiente diagrama entidad-relación muestra la nueva entidad `user_like_prop
 
 ##### Diagrama entidad-relación
 
-Código SQL
 El siguiente código SQL crea la tabla `user_like_property` y define sus relaciones con las tablas existentes `user` y `property`:
 
 ```sql
