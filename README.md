@@ -46,6 +46,8 @@ A continuación se describen los endpoints disponibles en la aplicación.
 
 Devuelve una lista de todas las propiedades registradas en la base de datos.
 
+Tambien se puede filtrar por req.query o req.body: `address`, `city`, `price`, `year`
+
 <!-- ### POST /properties/:id/like
 
 Registra que un usuario ha dado "like" a una propiedad específica. Se debe especificar el `id` de la propiedad en la URL. -->
