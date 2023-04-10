@@ -84,7 +84,6 @@ Código SQL
 El siguiente código SQL crea la tabla `user_like_property` y define sus relaciones con las tablas existentes `user` y `property`:
 
 ```sql
-Copy code
 CREATE TABLE user_like_property (
     user_id INT NOT NULL,
     property_id INT NOT NULL,
