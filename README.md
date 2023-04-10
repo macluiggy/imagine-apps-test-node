@@ -55,7 +55,7 @@ Registra que un usuario ha dado "like" a una propiedad específica. Se debe espe
 ## Diseño de la base de datos
 
 Adjunto el diagrama E-R que diseñé para la base de datos, en el archivo "er-diagram.png":
-![Alt Text](er-diagram.png)
+![Alt Text](backend/er-diagram.png)
 
 La tabla `property` contiene información sobre cada propiedad, como su dirección, ciudad, precio, descripción y año de construcción.
 
