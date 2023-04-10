@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   db:
-    image: postgres:13.4
+    image: postgres
     environment:
       POSTGRES_USER: postgres
       # POSTGRES_PASSWORD: ${DB_PASS}
@@ -10,8 +10,9 @@ services:
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     ports:
-      - "5434:5432"
+      - "35432:5432"
   app:
+    restart: on-failure
     build: .
     environment:
       - host=lallah.db.elephantsql.com
@@ -19,6 +20,10 @@ services:
       - pass=hEIxLnFR2us893BgnC8T7y3hpUTTlh57
       - schema=isrhdnag
     ports:
-      - "3000:3000"
+      - "3007:3001"
+    command: npm run dev
     depends_on:
       - db
+    volumes:
+      - .:/app
+      - /app/node_modules
