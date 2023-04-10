@@ -6,7 +6,8 @@ import { property, status, status_history } from "../models/init-models";
 
 const get = async (req: Request, res: Response) => {
   try {
-    let { address, city, year } = req.query;
+    let { address, city, year } =
+      Object.keys(req.query).length > 0 ? req.query : req.body;
     const _year = parseInt(year as string);
     const filtros: {
       status_id?: {
