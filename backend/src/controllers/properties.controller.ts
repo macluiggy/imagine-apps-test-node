@@ -65,6 +65,7 @@ const get = async (req: Request, res: Response) => {
       }; 
     });
     return res.status(200).json({
+      error: false,
       message: "Se obtuvieron las propiedades",
       // data: { property, status, status_id },
       data: prop,
@@ -73,7 +74,8 @@ const get = async (req: Request, res: Response) => {
     console.log(error);
 
     res.status(404).json({
-      error: error.message,
+      error: true,
+      message: error.message,
       data: [],
     });
   }

@@ -1,12 +1,20 @@
 import { Request, Response } from "express";
 import { property, status, status_history } from "../models/init-models";
-import { get } from "../controllers/properties.controller"; 
-import * as jest from "jest";
+import { get } from "../controllers/properties.controller";
+// import * as jest from "jest";
 
+describe("sum", () => {
+  it("should return 4", () => {
+    expect(2 + 2).toBe(4);
+  });
+});
 describe("get", () => {
   it("should return all properties", async () => {
     // Mock request and response objects
-    const req = {} as Request;
+    const req = {
+      query: {},
+      body: {},
+    } as Request;
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
@@ -37,6 +45,7 @@ describe("get", () => {
     // Verify that the function returns the expected data
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({
+      error: false,
       message: "Se obtuvieron las propiedades",
       data: [
         {
@@ -70,14 +79,18 @@ describe("get", () => {
     // Verify that the function returns the expected data
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({
+      error: false,
       message: "Se obtuvieron las propiedades",
       data: [],
     });
   });
-
+ 
   it("should handle errors", async () => {
     // Mock request and response objects
-    const req = {} as Request;
+    const req = {
+      query: {},
+      body: {},
+    } as Request;
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
@@ -92,7 +105,8 @@ describe("get", () => {
     // Verify that the function returns the expected data
     expect(res.status).toHaveBeenCalledWith(404);
     expect(res.json).toHaveBeenCalledWith({
-      error: "Some error",
+      error: true,
+      message: "Some error",
       data: [],
     });
   });

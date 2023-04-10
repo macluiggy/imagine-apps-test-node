@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../db";
 const { schema } = process.env;
 
-const Property = sequelize.define(
+const Property: any = sequelize.define(
   "property",
   {
     address: {
