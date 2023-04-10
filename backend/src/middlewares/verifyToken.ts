@@ -9,10 +9,13 @@ const router = Router();
 export default function verifyToken(req, res, next) {
   let token = req.headers["x-access-token"] || req.headers["authorization"];
   if (!token) {
-    return res.status(401).json({
-      auth: false,
-      message: "No se ha proporcionado un token",
-    });
+    // return res.status(401).json({
+    //   auth: false,
+    //   message: "No se ha proporcionado un token",
+    // });
+    req.body.estaLogueado = false;
+    next();
+    return;
   }
   if (token.startsWith("Bearer ")) {
     token = token.split(" ")[1];
@@ -20,8 +23,9 @@ export default function verifyToken(req, res, next) {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.userId = decoded.id;
+    req.body.estaLogueado = true;
     next();
   } catch (error) {
-    return res.status(401).json({ error: "Token inválido" });
+    // return res.status(401).json({ error: "Token inválido" });
   }
 }
