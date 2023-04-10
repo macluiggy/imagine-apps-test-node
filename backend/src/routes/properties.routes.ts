@@ -1,7 +1,7 @@
 // import { create, getAll } from "../controllers/cedula.controller";
 import { Router } from "express";
 import verifyToken from "../middlewares/verifyToken";
-import Property from "models/Property";
+import Property from "../models/Property";
 
 const router = Router();
 

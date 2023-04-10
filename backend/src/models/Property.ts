@@ -1,32 +1,34 @@
-import Sequelize from "sequelize";
+import { DataTypes } from "sequelize";
 import { sequelize } from "../db";
+const { schema } = process.env;
 
 const Property = sequelize.define(
   "property",
   {
     address: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING, // Aquí también se debe usar DataTypes
     },
     city: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     price: {
-      type: Sequelize.DECIMAL,
+      type: DataTypes.DECIMAL,
     },
     description: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
     },
     year: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
     },
     id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
   },
   {
     timestamps: false,
+    tableName: "property",
   }
 );
 
