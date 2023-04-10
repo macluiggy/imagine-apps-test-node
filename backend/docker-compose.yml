@@ -15,10 +15,10 @@ services:
     restart: on-failure
     build: .
     environment:
-      - host=db
-      - user=postgres
-      - pass=
-      - schema=postgres
+      - host=lallah.db.elephantsql.com
+      - user=isrhdnag
+      - pass=hEIxLnFR2us893BgnC8T7y3hpUTTlh57
+      - schema=isrhdnag
     ports:
       - "3000:3000"
     command: npm start
