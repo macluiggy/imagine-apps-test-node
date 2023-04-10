@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { validate, ValidationError, Joi } from "express-validation";
-import { users } from "models/init-models";
+import { users } from "../models/init-models";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -8,12 +8,10 @@ const router = Router();
 
 const registerValidation = {
   body: Joi.object({
-    email: Joi.string().email().required(),
     password: Joi.string()
       .regex(/[a-zA-Z0-9]{3,30}/)
       .required(),
     username: Joi.string().required(),
-    nombre: Joi.string().required(),
   }),
 };
 

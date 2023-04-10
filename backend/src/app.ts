@@ -1,8 +1,6 @@
 import express from "express";
 import indexRoute from "./routes/index.route";
 import authRoute from "./routes/auth.routes";
-import clienteRoute from "./routes/cliente.routes";
-import departamentosRoute from "./routes/departamentos.routes";
 import PropertyRoute from "./routes/properties.routes";
 
 import cors from "cors";
@@ -15,8 +13,6 @@ app.use(cors()); //nunca te olvides de poner esto, si es que vas a usar las api 
 //routes
 app.use("/", indexRoute);
 app.use('/api', authRoute)
-app.use('/api', clienteRoute)
-app.use('/api', departamentosRoute)
 app.use('/api', PropertyRoute)
 
 app.get("/", (req, res) => {
