@@ -71,7 +71,7 @@ Adjunto el diagrama E-R que diseñé para la base de datos, en el archivo "er-di
 
 ##### Diagrama entidad-relación
 
-El siguiente diagrama entidad-relación muestra la nueva entidad `user_like_property` y sus relaciones con las entidades existentes `User` y `Property`:
+El siguiente diagrama entidad-relación muestra la nueva entidad `user_like_property` y sus relaciones con las entidades existentes `user` y `property`:
 
 ##### Diagrama entidad-relación
 
