@@ -1,6 +1,6 @@
-# Prueba técnica - [Nombre de la empresa]
+# Prueba técnica - Imagine Apps
 
-Este repositorio contiene mi solución a la prueba técnica de [Nombre de la empresa].
+Este repositorio contiene mi solución a la prueba técnica de Imagine Apps.
 
 ## Tecnologías utilizadas
 
