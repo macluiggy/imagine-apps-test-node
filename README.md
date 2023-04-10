@@ -9,7 +9,6 @@ Este repositorio contiene mi solución a la prueba técnica de [Nombre de la emp
 -   Express
 -   Sequelize
 -   PostgreSQL
--   Otros paquetes de Node.js utilizados: [lista de paquetes utilizados, si es el caso]
 
 ## Configuración del proyecto
 
@@ -44,13 +43,13 @@ Para ejecutar la aplicación, se debe ejecutar el siguiente comando:
 
 A continuación se describen los endpoints disponibles en la aplicación.
 
-### GET /properties
+### GET /api/properties
 
-Devuelve una lista de todas las propiedades registradas en la base de datos, junto con su estado actual.
+Devuelve una lista de todas las propiedades registradas en la base de datos.
 
-### POST /properties/:id/like
+<!-- ### POST /properties/:id/like
 
-Registra que un usuario ha dado "like" a una propiedad específica. Se debe especificar el `id` de la propiedad en la URL.
+Registra que un usuario ha dado "like" a una propiedad específica. Se debe especificar el `id` de la propiedad en la URL. -->
 
 ## Diseño de la base de datos
 
@@ -58,19 +57,15 @@ Adjunto en la carpeta "docs" el diagrama E-R que diseñé para la base de datos,
 
 La tabla `property` contiene información sobre cada propiedad, como su dirección, ciudad, precio, descripción y año de construcción.
 
-La tabla `status` contiene información sobre los diferentes estados que puede tener una propiedad, como "en venta", "vendida" o "en alquiler".
+La tabla `status` contiene información sobre los diferentes estados que puede tener una propiedad, como "en venta", "vendida" o "pre venta".
 
 La tabla `status_history` es una tabla intermedia que relaciona las propiedades con sus estados. Cada registro en esta tabla representa un cambio de estado en una propiedad en una fecha determinada.
 
-La tabla `likes` registra los "likes" que han dado los usuarios a las propiedades. Cada registro en esta tabla representa un "like" de un usuario a una propiedad en una fecha determinada.
+<!-- La tabla `likes` registra los "likes" que han dado los usuarios a las propiedades. Cada registro en esta tabla representa un "like" de un usuario a una propiedad en una fecha determinada. -->
 
 ## Comentarios adicionales
 
-[Opcional: aquí puedes incluir cualquier comentario adicional que consideres relevante sobre tu solución a la prueba técnica]
-
-¡Gracias por la oportunidad de participar en esta prueba técnica!# Prueba técnica - [Nombre de la empresa]
-
-Este repositorio contiene mi solución a la prueba técnica de [Nombre de la empresa].
+¡Gracias por la oportunidad de dejarme participar en esta prueba técnica!
 
 ## Tecnologías utilizadas
 
