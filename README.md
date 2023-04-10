@@ -8,6 +8,7 @@ Este repositorio contiene mi solución a la prueba técnica de Imagine Apps.
 - Express
 - Sequelize
 - PostgreSQL
+- Docker
 
 ## Configuración del proyecto
 
