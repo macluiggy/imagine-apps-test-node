@@ -26,11 +26,11 @@ Instale las dependencias
 
 La aplicación utiliza una base de datos PostgreSQL. Para configurar la conexión a la base de datos, se deben establecer las variables de entorno `user`, `pass`, `host`, y `schema` con los valores correspondientes.
 
-Además, se debe ejecutar el siguiente comando para crear las tablas necesarias en la base de datos:
+<!-- Además, se debe ejecutar el siguiente comando para crear las tablas necesarias en la base de datos:
 
 Copy code
 
-`npx sequelize-cli db:migrate`
+`npx sequelize-cli db:migrate` -->
 
 ### Ejecución de la aplicación
 
