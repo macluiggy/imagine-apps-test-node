@@ -56,13 +56,13 @@ const get = async (req: Request, res: Response) => {
       ],
     });
     const prop = _prop.map((prop: any) => {
-      const { address, city, price, description, id } = prop;
+      const { address, city, price, description } = prop;
       return {
         address,
         city,
         price,
         description,
-      };
+      }; 
     });
     return res.status(200).json({
       message: "Se obtuvieron las propiedades",
