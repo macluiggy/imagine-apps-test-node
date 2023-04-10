@@ -15,9 +15,6 @@ const Status: any = sequelize.define(
     label: {
       type: DataTypes.STRING,
     },
-    status_id: {
-      type: DataTypes.INTEGER,
-    },
   },
   {
     timestamps: false,

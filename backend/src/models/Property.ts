@@ -25,6 +25,9 @@ const Property = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    status_id: {
+      type: DataTypes.INTEGER,
+    },
   },
   {
     timestamps: false,
