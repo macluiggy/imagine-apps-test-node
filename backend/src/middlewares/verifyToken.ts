@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { validate, ValidationError, Joi } from "express-validation";
-import Usuarios from "../models/Usuarios";
+import { users } from "models/init-models";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 

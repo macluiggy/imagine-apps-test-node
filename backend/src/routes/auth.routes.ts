@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { validate, ValidationError, Joi } from "express-validation";
-import Usuarios from "../models/Usuarios";
+import { users } from "models/init-models";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -37,8 +37,8 @@ router.post("/login", validate(loginValidation, {}, {}), async (req, res) => {
   try {
     // buscar el usuario en la base de datos usango orm sequelize
     const { email, password } = req.body;
-    const user: any = await Usuarios.findOne({
-      attributes: ["id", "nombre", "username", "email", "password"],
+    const user: any = await users.findOne({
+      attributes: ["id", "username", "password"],
       where: {
         email,
       },
@@ -75,20 +75,19 @@ router.post(
   async (req, res) => {
     try {
       // crear el usuario en la base de datos usango orm sequelize
-      const { email, password, nombre, username } = req.body;
+      const { password, nombre, username } = req.body;
       // verificamos que no exista el usuario
-      const userFound = await Usuarios.findAll({
-        attributes: ["id", "nombre", "username", "email"],
+      const userFound = await users.findAll({
+        attributes: ["id", "username"],
         where: {
-          email,
+          username,
         },
       });
       if (userFound.length > 0) {
         throw new Error("Usuario ya existe");
       }
       const encryptedPassword = bcrypt.hashSync(password, 10);
-      const user = await Usuarios.create({
-        email,
+      const user = await users.create({
         password: encryptedPassword,
         nombre,
         username,
