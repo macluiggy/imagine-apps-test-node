@@ -54,9 +54,6 @@ Registra que un usuario ha dado "like" a una propiedad específica. Se debe espe
 
 ## Diseño de la base de datos
 
-Adjunto el diagrama E-R que diseñé para la base de datos, en el archivo "er-diagram.png":
-![Alt Text](backend/er-diagram.png)
-
 La tabla `property` contiene información sobre cada propiedad, como su dirección, ciudad, precio, descripción y año de construcción.
 
 La tabla `status` contiene información sobre los diferentes estados que puede tener una propiedad, como "en venta", "vendida" o "pre venta".
@@ -72,6 +69,10 @@ La tabla `status_history` es una tabla intermedia que relaciona las propiedades 
 ## "LIKE" SERVICE
 
 Este proyecto extiende el modelo de la base de datos existente para permitir que los usuarios den "like" a propiedades. Para lograrlo, se ha creado una nueva entidad llamada `user_like_property` que registra la información de los likes de los usuarios.
+
+
+Adjunto el diagrama E-R que diseñé para la base de datos, en el archivo "er-diagram.png":
+![Alt Text](backend/er-diagram.png)
 
 ##### Diagrama entidad-relación
 
