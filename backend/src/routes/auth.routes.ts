@@ -17,7 +17,7 @@ const registerValidation = {
 
 const loginValidation = {
   body: Joi.object({
-    email: Joi.string().email().required(),
+    username: Joi.string().required(),
     password: Joi.string()
       .regex(/[a-zA-Z0-9]{3,30}/)
       .required(),
@@ -34,11 +34,11 @@ type User = {
 router.post("/login", validate(loginValidation, {}, {}), async (req, res) => {
   try {
     // buscar el usuario en la base de datos usango orm sequelize
-    const { email, password } = req.body;
+    const { username, password } = req.body;
     const user: any = await users.findOne({
       attributes: ["id", "username", "password"],
       where: {
-        email,
+        username,
       },
     });
     // return res.json(user)
