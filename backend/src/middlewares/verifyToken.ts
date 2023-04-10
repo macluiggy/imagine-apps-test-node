@@ -9,11 +9,11 @@ const router = Router();
 export default function verifyToken(req, res, next) {
   let token = req.headers["x-access-token"] || req.headers["authorization"];
   if (!token) {
-    return res.status(401).json({
-      auth: false,
-      message:
-        "No se ha proporcionado un token, cree un usuario primero en /auth/signup o inicie sesión en /auth/login, luego use el token en el header de la petición 'req.headers.authorization'",
-    });
+    // return res.status(401).json({
+    //   auth: false,
+    //   message:
+    //     "No se ha proporcionado un token, cree un usuario primero en /auth/signup o inicie sesión en /auth/login, luego use el token en el header de la petición 'req.headers.authorization'",
+    // });
     req.body.estaLogueado = false;
     next();
     return;
