@@ -43,6 +43,9 @@ const get = async (req: Request, res: Response) => {
       include: [
         {
           model: status_history,
+          attributes: ["property_id", "status_id"],
+          order: [["update_date", "DESC"]],
+          limit: 1,
           include: [
             {
               model: status,
