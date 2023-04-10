@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../db";
 const { schema } = process.env;
 
-const Property: any = sequelize.define(
+const property: any = sequelize.define(
   "property",
   {
     address: {
@@ -35,4 +35,4 @@ const Property: any = sequelize.define(
   }
 );
 
-export default Property;
+export default property;

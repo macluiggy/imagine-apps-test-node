@@ -3,11 +3,6 @@ import { property, status, status_history } from "../models/init-models";
 import { get } from "../controllers/properties.controller";
 // import * as jest from "jest";
 
-describe("sum", () => {
-  it("should return 4", () => {
-    expect(2 + 2).toBe(4);
-  });
-});
 describe("get", () => {
   it("should return all properties", async () => {
     // Mock request and response objects
@@ -27,15 +22,6 @@ describe("get", () => {
         city: "Anytown",
         price: 100000,
         description: "A nice house",
-        status_history: [
-          {
-            status: {
-              id: 1,
-              name: "Available",
-              label: "For Sale",
-            },
-          },
-        ],
       },
     ]);
 
@@ -84,7 +70,7 @@ describe("get", () => {
       data: [],
     });
   });
- 
+
   it("should handle errors", async () => {
     // Mock request and response objects
     const req = {
