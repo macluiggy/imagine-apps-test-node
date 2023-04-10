@@ -1,24 +1,19 @@
 // import { create, getAll } from "../controllers/cedula.controller";
 import { Router } from "express";
 import verifyToken from "../middlewares/verifyToken";
-import Cliente from "../models/Clientes";
+import Property from "models/Property";
 
 const router = Router();
 
-router.get("/cliente", verifyToken, async (req, res) => {
+router.get("/property", async (req, res) => {
   try {
     // creamos el cliente
     // const { ncedula, nombre, apellido, id_departamento } = req.body;
-    const cliente = await Cliente.create({
-      ncedula,
-      nombre,
-      apellido,
-      id_departamento,
-    })
+    const property = await Property.findAll();
     return res.json({
       message: "Cliente creado",
-      data: cliente
-    })
+      data: property,
+    });
   } catch (error: any) {
     console.log(error);
 

@@ -3,6 +3,8 @@ import indexRoute from "./routes/index.route";
 import authRoute from "./routes/auth.routes";
 import clienteRoute from "./routes/cliente.routes";
 import departamentosRoute from "./routes/departamentos.routes";
+import PropertyRoute from "./routes/properties.routes";
+
 import cors from "cors";
 const app = express();
 
@@ -15,6 +17,7 @@ app.use("/", indexRoute);
 app.use('/api', authRoute)
 app.use('/api', clienteRoute)
 app.use('/api', departamentosRoute)
+app.use('/api', PropertyRoute)
 
 app.get("/", (req, res) => {
   // res.send("Hello World!");

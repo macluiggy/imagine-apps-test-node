@@ -2,7 +2,8 @@ import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 dotenv.config();
 const { user, host, schema, pass } = process.env;
-const URI = `postgresql://${user}:${pass}@${host}/${schema}`;
+// const URI = `postgresql://${user}:${pass}@${host}/${schema}`;
+const URI = process.env.URI!
 console.log(URI);
 
 export const sequelize = new Sequelize(URI, {
