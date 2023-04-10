@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:13.4
+    environment:
+      POSTGRES_USER: postgres
+      # POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: postgres
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+  app:
+    build: .
+    environment:
+      - host=lallah.db.elephantsql.com
+      - user=isrhdnag
+      - pass=hEIxLnFR2us893BgnC8T7y3hpUTTlh57
+      - schema=isrhdnag
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
