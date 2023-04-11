@@ -1,8 +1,8 @@
-# Prueba técnica - Imagine Apps
+# Technical Test - Imagine Apps
 
-Este repositorio contiene mi solución a la prueba técnica de Imagine Apps.
+This repository contains my solution to the Imagine Apps technical test.
 
-## Tecnologías utilizadas
+## Technologies used
 
 - Node.js
 - Express
@@ -10,115 +10,108 @@ Este repositorio contiene mi solución a la prueba técnica de Imagine Apps.
 - PostgreSQL
 - Docker
 
-## Configuración del proyecto
+## Project Setup
 
-### Instalación de dependencias
+### Installing Dependencies
 
-Para instalar las dependencias del proyecto, se debe ejecutar el siguiente comando:
+To install the project dependencies, run the following command:
 
-Vaya a la carpeta backend:
-`cd backend`:
+Navigate to the backend folder: `cd backend`
 
-Instale las dependencias
+Install the dependencies: `npm install`
 
-`npm install`
+### Database Configuration
 
-### Configuración de la base de datos
+The application uses a PostgreSQL database. To configure the database connection, set the environment variables `user`, `pass`, `host`, and `schema` with their corresponding values.
 
-La aplicación utiliza una base de datos PostgreSQL. Para configurar la conexión a la base de datos, se deben establecer las variables de entorno `user`, `pass`, `host`, y `schema` con los valores correspondientes.
+<!-- Additionally, run the following command to create the necessary tables in the database: Copy code `npx sequelize-cli db:migrate` -->
 
-<!-- Además, se debe ejecutar el siguiente comando para crear las tablas necesarias en la base de datos:
+### Running the Application
 
-Copy code
-
-`npx sequelize-cli db:migrate` -->
-
-### Ejecución de la aplicación
-
-Para ejecutar la aplicación, se debe ejecutar el siguiente comando:
-
-`npm run dev`
+To run the application, execute the following command: `npm run dev`
 
 ## Endpoints
 
-A continuación se describen los endpoints disponibles en la aplicación.
+The following endpoints are available in the application.
 
 ### GET /api/properties
 
-Devuelve una lista de todas las propiedades registradas en la base de datos.
+Returns a list of all the properties registered in the database.
 
-Tambien se puede filtrar por req.query o req.body: `address`, `city`, `price`, `year`
+Filtering can also be done by `req.query` or `req.body`: `address`, `city`, `price`, `year`
 
-<!-- ### POST /properties/:id/like
+<!-- ### POST /properties/:id/like Registers that a user has "liked" a specific property. The `id` of the property should be specified in the URL. -->
 
-Registra que un usuario ha dado "like" a una propiedad específica. Se debe especificar el `id` de la propiedad en la URL. -->
+## Database Design
 
-## Diseño de la base de datos
+The `property` table contains information about each property, such as its address, city, price, description, and year of construction.
 
-La tabla `property` contiene información sobre cada propiedad, como su dirección, ciudad, precio, descripción y año de construcción.
+The `status` table contains information about the different states a property can have, such as "for sale", "sold", or "pre-sale".
 
-La tabla `status` contiene información sobre los diferentes estados que puede tener una propiedad, como "en venta", "vendida" o "pre venta".
+The `status_history` table is an intermediate table that relates properties to their states. Each record in this table represents a state change for a property on a specific date.
 
-La tabla `status_history` es una tabla intermedia que relaciona las propiedades con sus estados. Cada registro en esta tabla representa un cambio de estado en una propiedad en una fecha determinada.
-
-<!-- La tabla `likes` registra los "likes" que han dado los usuarios a las propiedades. Cada registro en esta tabla representa un "like" de un usuario a una propiedad en una fecha determinada. -->
+<!-- The `likes` table records the "likes" that users have given to properties. Each record in this table represents a user's "like" for a property on a specific date. -->
 
 ## "LIKE" SERVICE
 
-Este proyecto extiende el modelo de la base de datos existente para permitir que los usuarios den "like" a propiedades. Para lograrlo, se ha creado una nueva entidad llamada `user_like_property` que registra la información de los likes de los usuarios.
+This project extends the existing database model to allow users to "like" properties. To achieve this, a new entity called `user_like_property` has been created to record user likes information.
 
-Adjunto el diagrama E-R que diseñé para la base de datos, en el archivo "er-diagram.png":
-![Alt Text](backend/er-diagram.png)
+I have attached the E-R diagram I designed for the database in the "er-diagram.png" file:
 
-##### Diagrama entidad-relación
+![Alt Text](/backend/er-diagram.png)
 
-El siguiente diagrama entidad-relación muestra la nueva entidad `user_like_property` y sus relaciones con las entidades existentes `user` y `property`:
+##### Entity-Relationship Diagram
 
-##### Diagrama entidad-relación
+The following Entity-Relationship diagram shows the new entity `user_like_property` and its relationships with the existing entities `user` and `property`:
 
-El siguiente código SQL crea la tabla `user_like_property` y define sus relaciones con las tablas existentes `user` y `property`:
+##### Entity-Relationship Diagram
 
-```sql
-CREATE TABLE user_like_property (
+The following SQL code creates the `user_like_property` table and defines its relationships with the existing `user` and `property` tables:
+
+sqlCopy code
+
+`CREATE TABLE user_like_property (
     user_id INT NOT NULL,
     property_id INT NOT NULL,
     PRIMARY KEY (user_id, property_id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (property_id) REFERENCES property(id)
-);
-```
+);`
 
-La tabla `user_like_property` tiene dos columnas: `user_id` y `property_id`, que almacenan la información del usuario que dio like y la propiedad que recibió el like, respectivamente. La clave primaria de la tabla se define como una combinación de ambas columnas para garantizar que un usuario solo pueda dar like a una propiedad una vez.
+The `user_like_property` table has two columns: `user_id` and `property_id`, which store the information about the user who liked and the property that received the like, respectively. The table's primary key is defined as a combination of both columns to ensure that a user can only like a property once.
 
-La tabla `user_like_property` también tiene dos relaciones belongsTo con las tablas existentes `user` y `property`. La primera relación define que la columna `user_id` de la tabla `user_like_property` se relaciona con la columna id de la tabla `user`. La segunda relación define que la columna `property_id` de la tabla `user_like_property` se relaciona con la columna `id` de la tabla `property`.
+The `user_like_property` table also has two belongsTo relationships with the existing `user` and `property` tables. The first relationship defines that the `user_id` column in the `user_like_property` table relates to the `id` column in the `user` table. The second relationship defines that the `property_id` column in the `user_like_property` table relates to the `id` column in the `property` table.
 
-Explicación
-Se ha creado la tabla `user_like_property` y se han definido sus relaciones con las tablas existentes `user` y `property` para permitir que los usuarios den "like" a propiedades. Al agregar esta nueva entidad y sus relaciones, se puede registrar qué usuario dio like a qué propiedad y realizar consultas para obtener esta información.
+Explanation:
 
-Además, al definir las relaciones belongsTo con las tablas existentes, se garantiza que los datos se mantengan integrales y coherentes en todo momento.
+The `user_like_property` table has been created and its relationships with the existing `user` and `property` tables have been defined to allow users to "like" properties. By adding this new entity and its relationships, it is possible to record which user liked which property and perform queries to retrieve this information.
 
-Para más información acerca de este proyecto, por favor consultar la documentación.
+Furthermore, by defining the `belongsTo` relationships with the existing tables, data integrity and consistency are ensured at all times.
+
+For more information about this project, please refer to the documentation.
 
 # Extra points
+
 ## Testing
-Para correr los test ejecute:
+
+To run the tests, execute:
 
 `npm run jest`
 
-
 ## Docker
-En caso de que querer usar docker siga las instrucciones.
 
-Vaya a la carpeta backend:
+If you want to use Docker, follow these instructions:
+
+Go to the backend folder:
 
 `cd backend`
 
-Ejecute docker compose:
+Run Docker Compose:
 
 `docker-compose up`
 
-Ahora deberia poder usar la app en http://localhost:3000/
+You should now be able to use the app at [http://localhost:3000/](http://localhost:3000/).
 
-## Comentarios adicionales
+## Additional comments
 
-¡Gracias por la oportunidad de dejarme participar en esta prueba técnica!
+Thank you for the opportunity to participate in this technical test!
