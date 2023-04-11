@@ -38,7 +38,7 @@ The following endpoints are available in the application.
 
 Returns a list of all the properties registered in the database.
 
-Filtering can also be done by `req.query` or `req.body`: `address`, `city`, `price`, `year`
+Filtering can also be done by `req.query` or `req.body`: `address`, `city`, `year`
 
 <!-- ### POST /properties/:id/like Registers that a user has "liked" a specific property. The `id` of the property should be specified in the URL. -->
 
