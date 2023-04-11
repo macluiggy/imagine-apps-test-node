@@ -68,15 +68,16 @@ The following Entity-Relationship diagram shows the new entity `user_like_proper
 
 The following SQL code creates the `user_like_property` table and defines its relationships with the existing `user` and `property` tables:
 
-sqlCopy code
 
-`CREATE TABLE user_like_property (
+```sql
+CREATE TABLE user_like_property (
     user_id INT NOT NULL,
     property_id INT NOT NULL,
     PRIMARY KEY (user_id, property_id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (property_id) REFERENCES property(id)
-);`
+);
+```
 
 The `user_like_property` table has two columns: `user_id` and `property_id`, which store the information about the user who liked and the property that received the like, respectively. The table's primary key is defined as a combination of both columns to ensure that a user can only like a property once.
 
