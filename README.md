@@ -106,7 +106,7 @@ Para correr los test ejecute:
 
 
 ## Docker
-En caso de que querer usar docker siga las instrucciones
+En caso de que querer usar docker siga las instrucciones.
 Vaya a la carpeta backend:
 `cd backend`
 Ejecute docker compose:
