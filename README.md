@@ -9,6 +9,7 @@ This repository contains my solution to the Imagine Apps technical test.
 - Sequelize
 - PostgreSQL
 - Docker
+- Jest
 
 ## Project Setup
 
