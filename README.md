@@ -102,16 +102,22 @@ Para más información acerca de este proyecto, por favor consultar la documenta
 # Extra points
 ## Testing
 Para correr los test ejecute:
+
 `npm run jest`
 
 
 ## Docker
 En caso de que querer usar docker siga las instrucciones.
+
 Vaya a la carpeta backend:
+
 `cd backend`
+
 Ejecute docker compose:
+
 `docker-compose up`
-Ahor deberia poder usar la app en http://localhost:3000/
+
+Ahora deberia poder usar la app en http://localhost:3000/
 
 ## Comentarios adicionales
 
